@@ -50,13 +50,14 @@ document.addEventListener("DOMContentLoaded", function () {
       "form-publishDate-input"
     );
     //Retrieve values input from user
-    const newImage = formImgInput.files[0];
     const newTitle = formTitleInput.value;
     const newAuthor = formAuthorInput.value;
     const newPages = formPagesInput.value;
     const newPublishDate = formPublishDateInput.value;
     //Check if all input values are valid (if statement)
-    if (newImage && newTitle && newAuthor && newPages && newPublishDate) {
+    if (newTitle && newAuthor && newPages && newPublishDate) {
+      const newImage = formImgInput.files[0];
+
       //Create FileReader to read image file
       const reader = new FileReader();
       reader.onload = function () {
@@ -74,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //Update book list on the page
         updateBookList();
         //Reset form by clearing input field
-        formImg.value = "";
+        // formImg.value = "";
         formTitleInput.value = "";
         formAuthorInput.value = "";
         formPagesInput.value = "";
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const form = document.getElementById("form");
-  form.addEventListener("click", submitBookForm);
+  form.addEventListener("submit", submitBookForm);
 
   function updateBookList() {
     //Create bookListContainer element that will hold book list -reflects div
