@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
+  //create myLibrary array
   let myLibrary = [];
 
   function Book(imageURL, title, author, pages, publishDate) {
     this.imageURL = imageURL;
     this.title = title;
     this.author = `by ${author}`;
-    this.pages = `Pages: ${pages}`;
-    this.publishDate = `Date Published: ${publishDate}`;
+    this.pages = `${pages} pages`;
+    this.publishDate = publishDate;
   }
 
   //Manually add book objects to myLibrary array
@@ -30,8 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log(myLibrary);
 
   function addBook() {
-    //prompt user input, separate prompt for each property
-    //store user input in separate variables
+    //prompt user input into form
     let newTitle = prompt("Enter the book's title");
     let newAuthor = prompt("Enter the book's author");
     let newPages = prompt("Enter # of pages");
