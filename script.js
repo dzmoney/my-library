@@ -28,26 +28,69 @@ document.addEventListener("DOMContentLoaded", function () {
 
   myLibrary.push(book1, book2);
 
-  console.log(myLibrary);
-
-  function addBook() {
-    //prompt user input into form
-    let newTitle = prompt("Enter the book's title");
-    let newAuthor = prompt("Enter the book's author");
-    let newPages = prompt("Enter # of pages");
-    let newPublishDate = prompt("Enter the book's publish date");
-
-    //create new instance of book object using new
-    //pass user variables as arguments into Book constructor
-    let newBook = new Book(newTitle, newAuthor, newPages, newPublishDate);
-
-    //push newBook to myLibrary Array
-    myLibrary.push(newBook);
-
-    updateBookList();
+  function showAddBookForm() {
+    //Get form element
+    const formElement = document.getElementById("add-book-form");
+    //Display form  element by setting display to block
+    formElement.style.display = "block";
   }
 
-  // addBook();
+  const addBookBtn = document.getElementById("add-book-btn");
+  addBookBtn.addEventListener("click", showAddBookForm);
+
+  function submitBookForm(event) {
+    //prevent default
+    event.preventDefault();
+    //Get input elements for each book property
+    const formImgInput = document.getElementById("form-imageUrl-input");
+    const formTitleInput = document.getElementById("form-title-input");
+    const formAuthorInput = document.getElementById("form-author-input");
+    const formPagesInput = document.getElementById("form-pages-input");
+    const formPublishDateInput = document.getElementById(
+      "form-publishDate-input"
+    );
+    //Retrieve values input from user
+    const newImage = formImgInput.files[0];
+    const newTitle = formTitleInput.value;
+    const newAuthor = formAuthorInput.value;
+    const newPages = formPagesInput.value;
+    const newPublishDate = formPublishDateInput.value;
+    //Check if all input values are valid (if statement)
+    if (newImage && newTitle && newAuthor && newPages && newPublishDate) {
+      //Create FileReader to read image file
+      const reader = new FileReader();
+      reader.onload = function () {
+        const imageUrl = reader.result;
+        //Create new book object
+        let newBook = new Book(
+          imageUrl,
+          newTitle,
+          newAuthor,
+          newPages,
+          newPublishDate
+        );
+        //Add book to library
+        myLibrary.push(newBook);
+        //Update book list on the page
+        updateBookList();
+        //Reset form by clearing input field
+        formImg.value = "";
+        formTitleInput.value = "";
+        formAuthorInput.value = "";
+        formPagesInput.value = "";
+        formPublishDateInput.value = "";
+        //Get form element
+        const formElement = document.getElementById("add-book-form");
+        //Hide for element - display none
+        formElement.style.display = "none";
+      };
+      //Read selected image file as data URL
+      reader.readAsDataURL(newImage);
+    }
+  }
+
+  const form = document.getElementById("form");
+  form.addEventListener("click", submitBookForm);
 
   function updateBookList() {
     //Create bookListContainer element that will hold book list -reflects div
@@ -64,17 +107,17 @@ document.addEventListener("DOMContentLoaded", function () {
       const imgElement = document.createElement("img");
       imgElement.src = book.imageURL;
 
-      //Create h2 for each title
+      //Create elements for rest of book properties
       const titleElement = document.createElement("p");
       titleElement.textContent = book.title;
       titleElement.classList.add("book-title");
-      //Create p for each author
+
       const authorElement = document.createElement("p");
       authorElement.textContent = book.author;
-      //create p for each pages
+
       const pagesElement = document.createElement("p");
       pagesElement.textContent = book.pages;
-      //Create p for each publish date
+
       const publishDateElement = document.createElement("p");
       publishDateElement.textContent = book.publishDate;
 
@@ -88,5 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
       bookListContainer.appendChild(bookElement);
     }
   }
+
   updateBookList();
 });

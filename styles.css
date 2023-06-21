@@ -38,13 +38,14 @@ nav {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   font-size: 1rem;
   letter-spacing: 7px;
 }
 
 #title-ampersand {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  padding: 0 5px;
 }
 
 .nav-items_btn {
@@ -108,4 +109,24 @@ ion-icon {
 
 .book-title {
   font-style: italic;
+}
+
+#add-book-form form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#add-book-form form input {
+  border-radius: 4px;
+  border: 1px solid var(--header);
+  padding: 4px;
+  margin-bottom: 4px;
 }

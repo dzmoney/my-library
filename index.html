@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js"></script>
+
     <title>Library App</title>
   </head>
   <body>
@@ -18,7 +18,9 @@
       <header>
         <nav>
           <div class="nav-items">
-            <button type="button" class="nav-items_btn">Add New Book</button>
+            <button type="button" class="nav-items_btn" id="add-book-btn">
+              Add New Book
+            </button>
             <h1 class="nav-items_title">
               CHAPTER <span id="title-ampersand">&</span> VERSE
             </h1>
@@ -34,6 +36,42 @@
         </nav>
       </header>
       <div id="book-list"></div>
+      <div id="add-book-form" style="display: none">
+        <form action="" id="form">
+          <input
+            type="file"
+            id="form-imageUrl-input"
+            placeholder="Enter image url"
+            accept="image/*"
+            required
+          />
+          <input
+            type="text"
+            id="form-title-input"
+            placeholder="Enter title"
+            required
+          />
+          <input
+            type="text"
+            id="form-author-input"
+            placeholder="Enter author "
+            required
+          />
+          <input
+            type="number"
+            id="form-pages-input"
+            placeholder="Enter # of pages"
+            required
+          />
+          <input
+            type="text"
+            id="form-publishDate-input"
+            placeholder="Enter publish date"
+            required
+          />
+          <button type="submit">Add Book</button>
+        </form>
+      </div>
     </div>
     <script
       type="module"
@@ -43,5 +81,6 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
+    <script src="script.js"></script>
   </body>
 </html>
