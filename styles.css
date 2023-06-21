@@ -73,3 +73,34 @@ ion-icon {
   color: var(--title);
   padding-right: 10px;
 }
+
+#book-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 90px 70px;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.book img {
+  width: 90px;
+  height: 140px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.book p {
+  font-size: 0.7rem;
+  text-align: center;
+  line-height: 0;
+}
+
+.book-title {
+  font-style: italic;
+}
