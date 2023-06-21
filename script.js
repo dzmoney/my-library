@@ -28,6 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   myLibrary.push(book1, book2);
 
+  //
+  //
+  //
+  //ADDING BOOKS TO LIBARAY
+
   function showAddBookForm() {
     //Get form element
     const formElement = document.getElementById("add-book-form");
